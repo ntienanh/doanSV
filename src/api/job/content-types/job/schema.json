@@ -4,15 +4,54 @@
   "info": {
     "singularName": "job",
     "pluralName": "jobs",
-    "displayName": "Job"
+    "displayName": "Job",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
+    },
+    "exps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exp.exp"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "required": {
+      "type": "string"
+    },
+    "benefit": {
+      "type": "string"
+    },
+    "levels": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::level.level"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "work_tyle": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::work-tyle.work-tyle"
+    },
+    "gender": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gender.gender"
     }
   }
 }

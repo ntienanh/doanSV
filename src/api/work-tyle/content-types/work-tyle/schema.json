@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_tyles",
+  "info": {
+    "singularName": "work-tyle",
+    "pluralName": "work-tyles",
+    "displayName": "WorkTyle",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

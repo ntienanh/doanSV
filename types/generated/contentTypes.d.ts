@@ -677,34 +677,13 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiJobJob extends Schema.CollectionType {
-  collectionName: 'jobs';
+export interface ApiDistrictDistrict extends Schema.CollectionType {
+  collectionName: 'districts';
   info: {
-    singularName: 'job';
-    pluralName: 'jobs';
-    displayName: 'Job';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLocationLocation extends Schema.CollectionType {
-  collectionName: 'locations';
-  info: {
-    singularName: 'location';
-    pluralName: 'locations';
-    displayName: 'Location';
+    singularName: 'district';
+    pluralName: 'districts';
+    displayName: 'District';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -715,13 +694,137 @@ export interface ApiLocationLocation extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::location.location',
+      'api::district.district',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::location.location',
+      'api::district.district',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExpExp extends Schema.CollectionType {
+  collectionName: 'exps';
+  info: {
+    singularName: 'exp';
+    pluralName: 'exps';
+    displayName: 'Exp';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::exp.exp', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::exp.exp', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGenderGender extends Schema.CollectionType {
+  collectionName: 'genders';
+  info: {
+    singularName: 'gender';
+    pluralName: 'genders';
+    displayName: 'Gender';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJobJob extends Schema.CollectionType {
+  collectionName: 'jobs';
+  info: {
+    singularName: 'job';
+    pluralName: 'jobs';
+    displayName: 'Job';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    exps: Attribute.Relation<'api::job.job', 'oneToMany', 'api::exp.exp'>;
+    endDate: Attribute.Date;
+    description: Attribute.String;
+    address: Attribute.String;
+    required: Attribute.String;
+    benefit: Attribute.String;
+    levels: Attribute.Relation<'api::job.job', 'oneToMany', 'api::level.level'>;
+    quantity: Attribute.String;
+    work_tyle: Attribute.Relation<
+      'api::job.job',
+      'oneToOne',
+      'api::work-tyle.work-tyle'
+    >;
+    gender: Attribute.Relation<
+      'api::job.job',
+      'oneToOne',
+      'api::gender.gender'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLevelLevel extends Schema.CollectionType {
+  collectionName: 'levels';
+  info: {
+    singularName: 'level';
+    pluralName: 'levels';
+    displayName: 'Level';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::level.level',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::level.level',
       'oneToOne',
       'admin::user'
     > &
@@ -751,6 +854,73 @@ export interface ApiPostPost extends Schema.CollectionType {
   };
 }
 
+export interface ApiProvinceProvince extends Schema.CollectionType {
+  collectionName: 'provinces';
+  info: {
+    singularName: 'province';
+    pluralName: 'provinces';
+    displayName: 'Province';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    districts: Attribute.Relation<
+      'api::province.province',
+      'oneToMany',
+      'api::district.district'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::province.province',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::province.province',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWorkTyleWorkTyle extends Schema.CollectionType {
+  collectionName: 'work_tyles';
+  info: {
+    singularName: 'work-tyle';
+    pluralName: 'work-tyles';
+    displayName: 'WorkTyle';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::work-tyle.work-tyle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::work-tyle.work-tyle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -767,9 +937,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::district.district': ApiDistrictDistrict;
+      'api::exp.exp': ApiExpExp;
+      'api::gender.gender': ApiGenderGender;
       'api::job.job': ApiJobJob;
-      'api::location.location': ApiLocationLocation;
+      'api::level.level': ApiLevelLevel;
       'api::post.post': ApiPostPost;
+      'api::province.province': ApiProvinceProvince;
+      'api::work-tyle.work-tyle': ApiWorkTyleWorkTyle;
     }
   }
 }
