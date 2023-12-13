@@ -43,11 +43,6 @@
     "quantity": {
       "type": "string"
     },
-    "work_tyle": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::work-tyle.work-tyle"
-    },
     "gender": {
       "type": "relation",
       "relation": "oneToOne",

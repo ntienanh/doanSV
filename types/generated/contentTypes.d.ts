@@ -677,6 +677,42 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiCompanyCompany extends Schema.CollectionType {
+  collectionName: 'companies';
+  info: {
+    singularName: 'company';
+    pluralName: 'companies';
+    displayName: 'Company';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    logo: Attribute.Media;
+    numOfEmployees: Attribute.String;
+    description: Attribute.Text;
+    address: Attribute.String;
+    media: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::company.company',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::company.company',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDistrictDistrict extends Schema.CollectionType {
   collectionName: 'districts';
   info: {
@@ -782,11 +818,6 @@ export interface ApiJobJob extends Schema.CollectionType {
     benefit: Attribute.String;
     levels: Attribute.Relation<'api::job.job', 'oneToMany', 'api::level.level'>;
     quantity: Attribute.String;
-    work_tyle: Attribute.Relation<
-      'api::job.job',
-      'oneToOne',
-      'api::work-tyle.work-tyle'
-    >;
     gender: Attribute.Relation<
       'api::job.job',
       'oneToOne',
@@ -890,13 +921,12 @@ export interface ApiProvinceProvince extends Schema.CollectionType {
   };
 }
 
-export interface ApiWorkTyleWorkTyle extends Schema.CollectionType {
-  collectionName: 'work_tyles';
+export interface ApiTypeType extends Schema.CollectionType {
+  collectionName: 'types';
   info: {
-    singularName: 'work-tyle';
-    pluralName: 'work-tyles';
-    displayName: 'WorkTyle';
-    description: '';
+    singularName: 'type';
+    pluralName: 'types';
+    displayName: 'Type';
   };
   options: {
     draftAndPublish: true;
@@ -906,17 +936,9 @@ export interface ApiWorkTyleWorkTyle extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::work-tyle.work-tyle',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::work-tyle.work-tyle',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -937,6 +959,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::company.company': ApiCompanyCompany;
       'api::district.district': ApiDistrictDistrict;
       'api::exp.exp': ApiExpExp;
       'api::gender.gender': ApiGenderGender;
@@ -944,7 +967,7 @@ declare module '@strapi/types' {
       'api::level.level': ApiLevelLevel;
       'api::post.post': ApiPostPost;
       'api::province.province': ApiProvinceProvince;
-      'api::work-tyle.work-tyle': ApiWorkTyleWorkTyle;
+      'api::type.type': ApiTypeType;
     }
   }
 }

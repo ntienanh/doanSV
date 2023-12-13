@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * work-tyle service
+ * company service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::work-tyle.work-tyle');
+module.exports = createCoreService('api::company.company');

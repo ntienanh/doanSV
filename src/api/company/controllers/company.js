@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * work-tyle controller
+ * company controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::work-tyle.work-tyle');
+module.exports = createCoreController('api::company.company');

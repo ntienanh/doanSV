@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "work_tyles",
+  "collectionName": "types",
   "info": {
-    "singularName": "work-tyle",
-    "pluralName": "work-tyles",
-    "displayName": "WorkTyle",
-    "description": ""
+    "singularName": "type",
+    "pluralName": "types",
+    "displayName": "Type"
   },
   "options": {
     "draftAndPublish": true

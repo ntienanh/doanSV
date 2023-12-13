@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * work-tyle router
+ * company router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::work-tyle.work-tyle');
+module.exports = createCoreRouter('api::company.company');
