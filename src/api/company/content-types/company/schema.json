@@ -38,6 +38,9 @@
     },
     "media": {
       "type": "string"
+    },
+    "banner": {
+      "type": "string"
     }
   }
 }

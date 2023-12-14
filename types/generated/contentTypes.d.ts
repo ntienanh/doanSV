@@ -695,6 +695,7 @@ export interface ApiCompanyCompany extends Schema.CollectionType {
     description: Attribute.Text;
     address: Attribute.String;
     media: Attribute.String;
+    banner: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
