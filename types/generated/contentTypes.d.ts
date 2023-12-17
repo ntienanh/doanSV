@@ -587,7 +587,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -690,12 +689,12 @@ export interface ApiCompanyCompany extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    logo: Attribute.Media;
     numOfEmployees: Attribute.String;
     description: Attribute.Text;
     address: Attribute.String;
     media: Attribute.String;
     banner: Attribute.String;
+    logo: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

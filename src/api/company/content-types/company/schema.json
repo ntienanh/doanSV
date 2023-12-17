@@ -16,17 +16,6 @@
       "type": "string",
       "required": false
     },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "numOfEmployees": {
       "type": "string"
     },
@@ -40,6 +29,9 @@
       "type": "string"
     },
     "banner": {
+      "type": "string"
+    },
+    "logo": {
       "type": "string"
     }
   }
